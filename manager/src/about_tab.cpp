@@ -55,7 +55,7 @@ AboutTab::AboutTab()
     brls::Label *links = new brls::Label(
         brls::LabelStyle::SMALL,
         "\uE016  User guide and code source can be found on our GitHub repository\n" \
-        "\uE016  The sys-clk manager is powered by Borealis, an hardware accelerated UI library\n" \
+        "\uE016  The sys-clk manager is powered by Borealis, a hardware accelerated UI library\n" \
         "\uE016  Join the RetroNX Discord server for support, to request features or just hang out!",
         true
     );
