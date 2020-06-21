@@ -70,7 +70,7 @@ StatusTab::StatusTab(RefreshTask *refreshTask) :
     this->addView(serviceEnabledListItem);
 
     // Frequencies
-    brls::Header *hardwareHeader = new brls::Header("Frequencies");
+    brls::Header *hardwareHeader = new brls::Header("Hardware");
     this->addView(hardwareHeader);
 
     StatusGrid *frequenciesLayout = new StatusGrid();
@@ -86,9 +86,7 @@ StatusTab::StatusTab(RefreshTask *refreshTask) :
     frequenciesLayout->addView(this->memFreqCell);
 
     this->addView(frequenciesLayout);
-
-    brls::Header *tempsHeader = new brls::Header("Temperatures");
-    this->addView(tempsHeader);
+    
     // Temperatures
     StatusGrid *tempsLayout = new StatusGrid();
     tempsLayout->setSpacing(22);
@@ -187,6 +185,16 @@ StatusTab::StatusTab(RefreshTask *refreshTask) :
                     this->socTempCell->resetValueColor();
 
                 break;
+            case SysClkThermalSensor_Skin:
+                this->sknTempCell->setValue(formatTemp(temp));
+
+                if (temp > DANGEROUS_TEMP_THRESHOLD)
+                    this->sknTempCell->setValueColor(DANGEROUS_TEMP_COLOR);
+                else
+                    this->sknTempCell->resetValueColor();
+
+                break;
+
             default:
                 break;
         }
